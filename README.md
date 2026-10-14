@@ -1,94 +1,77 @@
-# Exercise 7: Boltzmann and Cauchy Machines
+# Exercise 8: Kohonen Self-Organizing Map (SOM)
 
-## Project Title
-**Implement Boltzmann and Cauchy Machines for Stochastic Feature Selection and Energy Optimization on the Wine Quality Dataset**
+## Customer Segmentation and Cluster Exploration System Using Mall Customers Dataset
 
-## Objective
-To implement a menu-driven stochastic feature selection and energy optimization system using Boltzmann Machine (BM) and Cauchy Machine (CM) models on the Wine Quality dataset.
+### Objective
+To develop a Self-Organizing Map (SOM)-based system for customer segmentation using the Mall Customers dataset. The system applies unsupervised learning to group customers based on their numerical attributes and explore customer clusters, prototypes, and outliers.
 
-## Dataset
-- **Dataset Name:** Wine Quality (WineQT)
-- **File Name:** `WineQT.csv`
-- **Target Column:** `quality`
-- **Input Features:** Wine chemical properties, such as acidity, residual sugar, chlorides, density, pH, sulphates, and alcohol.
+### Dataset
+**Mall Customers Dataset (`Mall_Customers.csv`)**
 
-Place `WineQT.csv` in the same directory as the Jupyter Notebook before running the program.
+The dataset typically contains customer information such as:
+- Customer ID
+- Gender
+- Age
+- Annual Income (k$)
+- Spending Score (1–100)
 
-## Technologies Used
+The numerical attributes are selected, missing values are handled, and the features are normalized using standardization before SOM training.
+
+### Technologies Used
 - Python
-- Jupyter Notebook
 - NumPy
 - Pandas
 - Matplotlib
 - Scikit-learn
+- Jupyter Notebook
 
-## Methodology
+### Algorithm
+The Kohonen Self-Organizing Map is an unsupervised neural network used to represent high-dimensional data on a lower-dimensional grid.
 
-Each feature-selection solution is represented as a binary state vector:
+The implementation follows these steps:
+1. Load the Mall Customers dataset.
+2. Select numerical attributes and handle missing values.
+3. Standardize the selected features.
+4. Initialize the SOM weight vectors.
+5. Find the Best Matching Unit (BMU) using Euclidean distance.
+6. Update the winning neuron's weights and its neighboring neurons using competitive learning.
+7. Analyze the resulting customer groups and cluster characteristics.
 
-- `1` — Feature selected
-- `0` — Feature not selected
+### Menu-Driven Features
+1. **Customer Segmentation using SOM** – Assign customers to SOM neurons and visualize the segmentation.
+2. **Best Matching Unit Explorer** – Find the BMU and distance for a selected customer.
+3. **Dynamic Cluster Count Challenge** – Compare reference clustering results for different cluster counts.
+4. **Customer Cluster Migration Analyzer** – Compare customer assignments between SOM configurations.
+5. **Cluster Prototype Generator** – Display representative feature values for occupied SOM neurons.
+6. **Outlier Customer Detector** – Identify customers with unusually large distances from their BMUs.
+7. **SOM Cluster Quality Comparison** – Compare SOM configurations using quantization error.
+8. **Exit** – Terminate the program.
 
-The energy function combines classification error with a penalty for selecting more features:
-
-**Energy = Classification Error + Feature Selection Penalty**
-
-Two stochastic optimization methods are implemented:
-
-1. **Boltzmann Annealing:** Uses an energy-based acceptance probability to explore feature subsets.
-2. **Cauchy Annealing:** Uses a Cauchy-based acceptance probability to explore alternative feature subsets.
-
-The objective is to find a feature subset with low energy while maintaining classification performance.
-
-## Features
-
-1. Boltzmann Machine Feature Selection
-2. Cauchy Machine Feature Selection
-3. Comparison of Boltzmann and Cauchy Machines
-4. Energy Function Analyzer
-5. Random Feature Selection
-6. Exit
-
-## Project Structure
-
+### Project Structure
 ```text
-Exercise-7-Boltzmann-Cauchy/
-├── Exercise_7_Boltzmann_Cauchy.ipynb
-├── WineQT.csv
+Exercise_8_SOM/
+├── Exercise_8_SOM.ipynb
+├── Mall_Customers.csv
 └── README.md
 ```
 
-## Installation
-
-Install the required Python libraries if they are not already available:
+### Installation
+Install the required libraries using:
 
 ```bash
-pip install numpy pandas matplotlib scikit-learn
+pip install numpy pandas matplotlib scikit-learn jupyter
 ```
 
-## How to Run
+### How to Run
+1. Download or clone this repository.
+2. Place `Mall_Customers.csv` in the same directory as the notebook.
+3. Open Jupyter Notebook.
+4. Open `Exercise_8_SOM.ipynb`.
+5. Run the notebook cells.
+6. Select a menu option to explore the SOM system.
 
-1. Download or obtain the WineQT dataset.
-2. Place `WineQT.csv` in the same directory as the notebook.
-3. Open `Exercise_7_Boltzmann_Cauchy.ipynb` in Jupyter Notebook.
-4. Run the notebook cell containing the complete program.
-5. Select an option from the menu.
-6. Compare the feature subsets, classification errors, energy values, and optimization graphs.
+### Expected Outcome
+The system demonstrates how a Self-Organizing Map can organize customers according to similarities in their numerical attributes. It supports customer segmentation, BMU exploration, cluster prototype analysis, outlier detection, and comparison of SOM configurations.
 
-## Expected Output
-
-The system displays:
-- Binary feature-selection vectors
-- Selected feature names
-- Number of selected features
-- Classification accuracy and error
-- Energy values
-- Boltzmann and Cauchy comparison
-- Energy optimization graphs
-
-## Result
-
-The project demonstrates stochastic feature selection using Boltzmann and Cauchy annealing. It compares their ability to search for low-energy feature subsets by considering both classification error and the number of selected features.
-
-## Author
-Student Project — Exercise 7
+### Result
+A menu-driven SOM customer segmentation and cluster exploration system is implemented using Python and the Mall Customers dataset. The system demonstrates unsupervised learning and competitive learning through a Kohonen Self-Organizing Map.
